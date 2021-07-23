@@ -138,3 +138,18 @@ i.fa-step-forward,
 i.fa-step-backward {
 cursor: pointer;
 }
+@media only screen and (max-width: 768px) {
+	.track-name {
+	font-size: 5rem;
+	}
+	.fa-5x {
+    font-size: 7em !important;
+}
+.slider_container {
+width: 90%;
+max-width: 700px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+}
