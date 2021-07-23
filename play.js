@@ -19,7 +19,7 @@ let updateTimer;
 let curr_track = document.createElement('audio');
 
 // Define the list of tracks that have to be played
-let track_list = [
+/*let track_list = [
   {
     name: "Basic 1",
     path: "Basics 1.mp3"
@@ -36,12 +36,12 @@ let track_list = [
   name: "Basic 4",
   path: "Basics 4.mp3"
 },
-];
-function load_track(track_index){
+];*/
+function load_track(song_name,path){
   clearInterval(updateTimer);
   resetValues();
-  document.getElementsByClassName("track-name")[0].innerHTML=track_list[track_index].name;
-  curr_track.src = track_list[track_index].path;
+  document.getElementsByClassName("track-name")[0].innerHTML=song_name;
+  curr_track.src = path;
   curr_track.load();
   updateTimer = setInterval(seekUpdate, 1000);
 }
@@ -109,8 +109,8 @@ function seekUpdate() {
     total_duration.textContent = durationMinutes + ":" + durationSeconds;
   }
 }
-meditation_id = sessionStorage.getItem("med_id");
-switch(meditation_id) {
+/*meditation_id = sessionStorage.getItem("med_id");
+//switch(meditation_id) {
   case "basic-1":
     // code block
     m_id = 0;
@@ -128,4 +128,14 @@ switch(meditation_id) {
         m_id = 3;
       break;
 }
-load_track(m_id);
+load_track(m_id);*/
+window.onload = function(){
+  var url = document.location.href,
+  params = url.split('?')[1].split('&');
+  var name = params[0].split('=')[1];
+  var id = params[1].split('=')[1];
+  var song_name = name+" "+id;
+  var path = name+" "+id+".mp3";
+  //console.log(path);
+  load_track(song_name, path);
+}
